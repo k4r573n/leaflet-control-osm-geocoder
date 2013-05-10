@@ -17,12 +17,14 @@ map.addControl(osmGeocoder);
 ```
 
 # What are the options ?
-You can specify an options object as a second argument of L.Control.OSMGeocoder.
+You can specify an options object as an argument of L.Control.OSMGeocoder.
 ```javascript
 var options = {
     collapsed: true, /* Whether its collapsed or not */
     position: 'topright', /* The position of the control */
     text: 'Locate', /* The text of the submit button */
+    bounds: null, /* a L.LatLngBounds object to limit the results to */
+    email: null, /* an email string with a contact to provide to Nominatim. Useful if you are doing lots of queries */
     callback: function (results) {
 			var bbox = results[0].boundingbox,
 				first = new L.LatLng(bbox[0], bbox[2]),
