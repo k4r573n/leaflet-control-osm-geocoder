@@ -39,5 +39,4 @@ var options = {
 
 # Credits
 A big thanks to all [Contributors](https://github.com/k4r573n/leaflet-control-osm-geocoder/graphs/contributors) especially Sa3m and his [Bing Geocoder](https://github.com/sa3m/leaflet-control-bing-geocoder) which is the base of this code.
-- all 
 
