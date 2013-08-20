@@ -1,3 +1,8 @@
+if (typeof console == "undefined") {
+	this.console = { log: function (msg) { /* do nothing since it would otherwise break IE */} };
+}
+
+
 L.Control.OSMGeocoder = L.Control.extend({
 	options: {
 		collapsed: true,
@@ -8,9 +13,9 @@ L.Control.OSMGeocoder = L.Control.extend({
 		callback: function (results) {
 			console.log(results);
 			var bbox = results[0].boundingbox,
-				first = new L.LatLng(bbox[0], bbox[2]),
-				second = new L.LatLng(bbox[1], bbox[3]),
-				bounds = new L.LatLngBounds([first, second]);
+			first = new L.LatLng(bbox[0], bbox[2]),
+			second = new L.LatLng(bbox[1], bbox[3]),
+			bounds = new L.LatLngBounds([first, second]);
 			this._map.fitBounds(bounds);
 		}
 	},
@@ -24,7 +29,7 @@ L.Control.OSMGeocoder = L.Control.extend({
 	onAdd: function (map) {
 		this._map = map;
 		var className = 'leaflet-control-geocoder',
-			container = this._container = L.DomUtil.create('div', className);
+		container = this._container = L.DomUtil.create('div', className);
 
 		L.DomEvent.disableClickPropagation(container);
 
@@ -33,9 +38,9 @@ L.Control.OSMGeocoder = L.Control.extend({
 		var input = this._input = document.createElement('input');
 		input.type = "text";
 
-		var submit = document.createElement('button');
+		var submit = document.createElement('input');
 		submit.type = "submit";
-		submit.innerHTML = this.options.text;
+		submit.value = this.options.text;
 
 		form.appendChild(input);
 		form.appendChild(submit);
@@ -64,7 +69,7 @@ L.Control.OSMGeocoder = L.Control.extend({
 
 	_geocode : function (event) {
 		L.DomEvent.preventDefault(event);
-    //http://wiki.openstreetmap.org/wiki/Nominatim
+		//http://wiki.openstreetmap.org/wiki/Nominatim
 		this._callbackId = "_l_osmgeocoder_" + (this._callbackId++);
 		window[this._callbackId] = L.Util.bind(this.options.callback, this);
 
@@ -76,25 +81,25 @@ L.Control.OSMGeocoder = L.Control.extend({
 			json_callback : this._callbackId,
 			format: 'json'
 		};
-		
+
 		if (this.options.bounds && this.options.bounds != null) {
-		    if( this.options.bounds instanceof L.LatLngBounds ) {
-			params.viewbox = this.options.bounds.toBBoxString();
-			params.bounded = 1;
-		    }
-		    else {
-			console.log('bounds must be of type L.LatLngBounds');
-			return;
-		    }
+			if( this.options.bounds instanceof L.LatLngBounds ) {
+				params.viewbox = this.options.bounds.toBBoxString();
+				params.bounded = 1;
+			}
+			else {
+				console.log('bounds must be of type L.LatLngBounds');
+				return;
+			}
 		}
 
 		if (this.options.email && this.options.email != null) {
-		    if (typeof this.options.email == 'string') {
-			params.email = this.options.email;
-		    }
-		    else{
-			console.log('email must be a string');
-		    }
+			if (typeof this.options.email == 'string') {
+				params.email = this.options.email;
+			}
+			else{
+				console.log('email must be a string');
+			}
 		}
 
 		var url = " http://nominatim.openstreetmap.org/search" + L.Util.getParamString(params),
