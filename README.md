@@ -4,6 +4,8 @@ Leaflet Control OSM Geocoder
 # What is it ?
 A simple geocoder that uses the OpenstreetMap gecoder Nominatim to locate places.
 
+try this [demo](http://k4r573n.github.io/leaflet-control-osm-geocoder/)
+
 # How to use it ?
 ```javascript
 var cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
@@ -36,4 +38,6 @@ var options = {
 ```
 
 # Credits
-A big thanks to Sa3m and his [Bing Geocoder](https://github.com/sa3m/leaflet-control-bing-geocoder) which is the base of this code.
+A big thanks to all [Contributors](https://github.com/k4r573n/leaflet-control-osm-geocoder/graphs/contributors) especially Sa3m and his [Bing Geocoder](https://github.com/sa3m/leaflet-control-bing-geocoder) which is the base of this code.
+- all 
+
