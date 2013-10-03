@@ -139,15 +139,15 @@ L.Control.OSMGeocoder = L.Control.extend({
 
         //and now Nominatim
 		//http://wiki.openstreetmap.org/wiki/Nominatim
-		this._callbackId = "_l_osmgeocoder_" + (this._callbackId++);
-		window[this._callbackId] = L.Util.bind(this.options.callback, this);
+        console.log(this._callbackId);
+		window[("_l_osmgeocoder_"+this._callbackId)] = L.Util.bind(this.options.callback, this);
 
 
 		/* Set up params to send to Nominatim */
 		var params = {
 			// Defaults
 			q: this._input.value,
-			json_callback : this._callbackId,
+			json_callback : ("_l_osmgeocoder_"+this._callbackId++),
 			format: 'json'
 		};
 
