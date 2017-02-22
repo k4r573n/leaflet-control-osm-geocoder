@@ -25,6 +25,7 @@ var options = {
     collapsed: true, /* Whether its collapsed or not */
     position: 'topright', /* The position of the control */
     text: 'Locate', /* The text of the submit button */
+    placeholder: '', /* The text of the search input placeholder */
     bounds: null, /* a L.LatLngBounds object to limit the results to */
     email: null, /* an email string with a contact to provide to Nominatim. Useful if you are doing lots of queries */
     callback: function (results) {
