@@ -22,11 +22,11 @@
 
 	<script type="text/javascript">
         var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        var osmAttrib='Map data &copy; OpenStreetMap contributors'; 
+        var osmAttrib='Map data &copy; OpenStreetMap contributors';
         var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
 		var map = new L.Map('map').addLayer(osm).setView(new L.LatLng(48.5, 2.5), 15);
 
-		var osmGeocoder = new L.Control.OSMGeocoder();
+		var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Search location...'});
 
 		map.addControl(osmGeocoder);
 	</script>

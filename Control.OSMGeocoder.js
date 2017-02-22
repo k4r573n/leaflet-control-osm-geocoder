@@ -8,6 +8,7 @@ L.Control.OSMGeocoder = L.Control.extend({
 		collapsed: true,
 		position: 'topright',
 		text: 'Locate',
+		placeholder: '',
 		bounds: null, // L.LatLngBounds
 		email: null, // String
 		callback: function (results) {
@@ -41,6 +42,7 @@ L.Control.OSMGeocoder = L.Control.extend({
 
 		var input = this._input = document.createElement('input');
 		input.type = "text";
+		input.placeholder = this.options.placeholder || '';
 
 		var submit = document.createElement('input');
 		submit.type = "submit";
@@ -70,7 +72,7 @@ L.Control.OSMGeocoder = L.Control.extend({
 
 		return container;
 	},
-    
+
     /* helper functions for cordinate extraction */
     _createSearchResult : function(lat, lon) {
         //creates an position description similar to the result of a Nominatim search
