@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Leaflet Osm Geocoder Demo page</title>
+	<title>Leaflet OSMGeocoder demo page</title>
 
-    <link rel="stylesheet" href="leaflet.css" />
-    <link rel="stylesheet" href="Control.OSMGeocoder.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="leaflet.ie.css" /><![endif]-->
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 
-    <script src="leaflet.js"></script>
-    <script src="Control.OSMGeocoder.js"></script>
+	<!--<script src="../Control.OSMGeocoder.js"></script>-->
+	<!--<link rel="stylesheet" href="../Control.OSMGeocoder.css" />-->
 
-	<style type="text/css">
-	#map {
-		width: 800px;
-		height: 600px;
-		border: 1px solid #ccc;
-	}
+	<script src="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.js"></script>
+	<link rel="stylesheet" href="https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.css" />
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		html, body, #map {
+			height: 100%;
+			width: 100%;
+		}
 	</style>
 </head>
 <body>
 	<div id="map"></div>
 
 	<script type="text/javascript">
-        var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        var osmAttrib='Map data &copy; OpenStreetMap contributors'; 
-        var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
-		var map = new L.Map('map').addLayer(osm).setView(new L.LatLng(48.5, 2.5), 15);
+		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		var osmAttrib='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		var osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});
+		var map = new L.Map('map').addLayer(osm).setView([48.5, 2.5], 15);
 
-		var osmGeocoder = new L.Control.OSMGeocoder();
+		var osmGeocoder = new L.Control.OSMGeocoder({placeholder: 'Search location...'});
 
 		map.addControl(osmGeocoder);
 	</script>
